@@ -1,4 +1,8 @@
 {
-  "name": "aztec-tx-pusher",
-  "packageManager": "yarn@4.1.1"
+  "name": "aztec-tx-mirror",
+  "packageManager": "yarn@4.1.1",
+  "dependencies": {
+    "@aztec/aztec.js": "0.85.0-alpha-testnet.2",
+    "@aztec/stdlib": "0.85.0-alpha-testnet.2"
+  }
 }
