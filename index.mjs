@@ -23,6 +23,16 @@ if (targetTxHashes.length === 0) {
 }
 
 const targetClient = createAztecNodeClient(targetNodeUrl);
+const known = await targetClient.getTxsByHash(targetTxHashes);
+for (const tx of known) {
+  const txHash = await tx.getTxHash();
+  console.log(`${txHash} Already known by the node. Skipping.`);
+  targetTxHashes.splice(
+    targetTxHashes.findIndex((t) => t.equals(txHash)),
+    1,
+  );
+}
+
 for (const nodeUrl of nodeUrls) {
   if (targetTxHashes.length === 0) {
     break;
